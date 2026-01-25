@@ -3,8 +3,14 @@
   <head><title>JOIN</title></head>
 <body>
   <div>
-    NUMBER OF PLAYERS:<input type="number">
-    <button>SUBMIT</button>
+    NUMBER OF PLAYERS:<input id="n" type="number">
+    <button onclick="check()">SUBMIT</button>
   </div>
+  <script>
+    function check(){
+    let num=document.getElementById("n").value;
+    if(num<1){
+      alert("There should be atleast one player");}}
+  </script>
 </body>
 </html>
