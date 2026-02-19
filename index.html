@@ -368,13 +368,13 @@
 function openMenu(){
   document.getElementById("sideMenu").style.left = "0";
   document.getElementById("overlay").style.display = "block";
-  document.getElementById("menu-btn").style.display = "none";
+  document.querySelector(".menu-btn").style.display = "none";
  }
 
 function closeMenu(){
   document.getElementById("sideMenu").style.left = "-320px";
   document.getElementById("overlay").style.display = "none";
-  document.getElementById("menu-btn").style.display = "block";
+  document.querySelector(".menu-btn").style.display = "block";
  }
 
 let el1=document.getElementById("ds");
