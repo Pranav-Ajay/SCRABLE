@@ -290,7 +290,7 @@
         <div id="suspectInterviewSection"></div>
 
         <button onclick="create()">Generate FIR</button>
-        <button onclick="caseController()">Run Investigation</button>
+        <button id="v" onclick="caseController()">Run Investigation</button>
 
         <div id="output"></div>
 
@@ -831,15 +831,17 @@ function execute(){
 function caseController(){
   
   let chatAnswer = document.getElementById("chatInput").value.trim();
-
+  
+if(fir && victimAlive){
   if(!policeMode.active){
     execute();
     policeMode.active = true;
     addHistory("SYSTEM: Case file created. Investigation started.");
     addHistory("POLICE: " + policeQuestionEngine());
     document.getElementById("chatInput").value="";
+    document.getElementById("v").style.display="none";
     return;
-  }
+  }}
 
   if(chatAnswer){
     addHistory("USER: " + chatAnswer);
