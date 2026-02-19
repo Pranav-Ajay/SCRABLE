@@ -5,6 +5,7 @@
   <style>
     body { font-family: Arial, sans-serif; }
     input, select, textarea { margin-bottom: 10px; padding: 5px; width: 100%; }
+    button{ background: #013220; color: white;border: none;padding: 12px;border-radius: 10px;font-size: 15px;cursor: pointer;}
     button { padding: 8px 12px; margin-top: 5px; cursor: pointer; }
     button:hover{ background: #d4af37; color: white;}
     .suspect-section { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
@@ -116,8 +117,8 @@
 
         <br><br>
 
-        <button style="background-color:#013220; color:white; border-radius:30px;" onclick="create()">Generate FIR</button>
-        <button style="background-color:#013220; color:white; border-radius:30px;" onclick="caseController()">Run Investigation</button>
+        <button onclick="create()">Generate FIR</button>
+        <button onclick="caseController()">Run Investigation</button>
 
         <div id="output"></div>
 
