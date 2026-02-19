@@ -1,53 +1,135 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANVESHAN INTELLIGENCE</title>
+
   <style>
-   body{ margin: 0; padding: 30px; font-family: "Poppins", sans-serif; background: linear-gradient(to right, #4b3a24, #2f2416) background-color:#0b3d2e;}
-    input, select, textarea { margin-bottom: 10px; padding: 5px; width: 100%; color:; }
-    button{ background: #013220; color: white;border: none;padding: 12px;border-radius: 10px;font-size: 15px;cursor: pointer;}
-    button { padding: 8px 12px; margin-top: 5px; cursor: pointer; }
-    button:hover{ background: #d4af37; color: white;}
-    .suspect-section { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
-    #output { margin-top: 20px; padding: 10px; border: 1px solid #aaa; background: #f9f9f9; }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      padding-bottom: 60px; 
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 3fr 1fr;
+      min-height: 100vh;
+    }
+    .side {
+      background-color: #4b3621;
+      padding: 20px;
+      color: white;
+    }
+
+    .center {
+      background-color: #0b3d2e;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-box {
+      width: 100%;
+      max-width: 750px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 25px rgba(0,0,0,0.4);
+    }
+
+    input, select, textarea {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #013220;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      background: #d4af37;
+      color: white;
+    }
+
+    .profile-box {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    #ds {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      outline: black;
+      outline-style: solid;
+      object-fit: cover;
+    }
+
+    #de {
+      width: 200px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    #dis {
+      display: none;
+      position: fixed;
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      gap: 10px;
+      align-items: center;
+    }
+
+    #chatInput {
+      width: 500px;
+      background-color: #BDC7D1;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+    }
+    
+    .footer {
+      bottom: 0;
+      position: fixed;
+      left: 0;
+      width: 100%;
+      background-color: #5F4C24;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
 
-  <div style="width:450px; height:1000px; background-color: #4b3621; left:0; top:0; position:fixed;">
-    <div style="margin-left:20px;">
+  <div class="layout">
+
+    <div class="side">
       <ol id="y"></ol>
     </div>
-  </div>
 
-  <div style="width:450px; height:1000px; background-color: #4b3621; right:0; top:0; position:fixed;">
-    <div style="right:7%; top:10%; position:fixed; color:white; font-size:20px;">
-      <img id="ds" width="200" height="250" style="border-radius: 50%; outline:black; outline-style: solid;"><br><br><br><br>
-      Name:<p id="k" style="color: white; left:20%"></p><br><br>
-       📞:<p id="l" style="color: white;"></p><br><br>
-       ✉:<p id="m" style="color: white;"></p><br><br>
-      Signature:<br><br>
-      <img id="de" width="200" height="100">
-    </div>
-  </div>
+    <div class="center">
+      <div class="form-box">
 
-  <div id="dis" style="display:none; position:fixed; bottom:5%; right:30%;">
-  <input type="text" id="chatInput"
-    style="width:600px; background-color:#BDC7D1; padding:10px; border-radius:20px;">
-  
-  <button onclick="caseController()">→</button>
-  </div>
-
-  <div style="bottom:0; position:fixed; left:0;width:100%;background-color:#5F4C24;color:white;display:flex;justify-content:center;align-items:center;padding:10px;text-align:center;">
-    Anveshan Intelligence can make mistakes, please use it carefully.
-  </div>
-
-  <div style="display:flex; justify-content:center;">
-    <div class="x" style="width:600px; display:flex; flex-direction:column; gap:30px; margin-top:50px; height:800px">
-
-      <div style="display:flex; flex-direction:column;">
-        <h2>Hi, please fill out these details</h2>
+        <h2 style="text-align:center;">Hi, please fill out these details</h2>
 
         <ol id="details">
           <li>Complainant Name: <input id="complainantName"></li>
@@ -112,10 +194,7 @@
         </select>
 
         <div id="dynamicSection"></div>
-
         <div id="suspectInterviewSection"></div>
-
-        <br><br>
 
         <button onclick="create()">Generate FIR</button>
         <button onclick="caseController()">Run Investigation</button>
@@ -124,8 +203,38 @@
 
       </div>
     </div>
+
+    <div class="side">
+      <div class="profile-box">
+        <img id="ds"><br><br>
+
+        <b>Name:</b>
+        <p id="k"></p>
+
+        <b>📞:</b>
+        <p id="l"></p>
+
+        <b>✉:</b>
+        <p id="m"></p>
+
+        <b>Signature:</b><br><br>
+        <img id="de">
+      </div>
+    </div>
+
   </div>
 
+  <div id="dis">
+    <input type="text" id="chatInput">
+    <button onclick="caseController()">→</button>
+  </div>
+
+  <div class="footer">
+    Anveshan Intelligence can make mistakes, please use it carefully.
+  </div>
+
+</body>
+</html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script src="fir(1).js"></script>
