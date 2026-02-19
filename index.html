@@ -30,9 +30,11 @@
     </div>
   </div>
 
-  <div style="position:fixed; bottom:5%; right:30%;">
-    <input id="chatInput" style="width:600px; background-color:#BDC7D1; padding:10px; border-radius:20px;">
-    <button onclick="caseController()">→</button>
+  <div id="dis" style="display:none; position:fixed; bottom:5%; right:30%;">
+  <input type="text" id="chatInput"
+    style="width:600px; background-color:#BDC7D1; padding:10px; border-radius:20px;">
+  
+  <button onclick="caseController()">→</button>
   </div>
 
   <div style="bottom:0; position:fixed; left:0;width:100%;background-color:#5F4C24;color:white;display:flex;justify-content:center;align-items:center;padding:10px;text-align:center;">
@@ -568,6 +570,7 @@ function execute(){
 }
 
 function caseController(){
+  document.getElementById("dis").style.display = "flex";
   let chatAnswer = document.getElementById("chatInput").value.trim();
 
   if(!policeMode.active){
