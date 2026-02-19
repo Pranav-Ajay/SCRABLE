@@ -159,13 +159,14 @@
           </li>
 
           <li>Address: <input id="address"></li>
-          <li>Phone/Email: <input></li>
+          <li>Phone: <input type="tel" pattern="\+91[0-9]{10}" placeholder="+911234567890" required> ></li>
 
           <li>Holiday:
             <select id="holiday">
               <option value="">Select</option>
-              <option>yes</option>
-              <option>no</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>No idea</option>
             </select>
           </li>
 
@@ -174,8 +175,9 @@
           <li>Festival:
             <select id="festival">
               <option value="">Select</option>
-              <option>yes</option>
-              <option>no</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>No idea</option>
             </select>
           </li>
 
@@ -201,6 +203,7 @@
           <option value="">Select</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
+          <option value="probably">No</option>
         </select>
 
         <div id="dynamicSection"></div>
