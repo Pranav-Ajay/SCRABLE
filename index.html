@@ -830,9 +830,10 @@ function execute(){
 
 function caseController(){
   
-  let chatAnswer = document.getElementById("chatInput").value.trim();
+ let chatAnswer = document.getElementById("chatInput").value.trim();
+ let x=localStorage.getItem("FIR");
   
-if(fir && victimAlive){
+ if(x && victimAlive){
   if(!policeMode.active){
     execute();
     policeMode.active = true;
