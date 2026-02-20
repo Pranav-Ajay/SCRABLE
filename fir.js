@@ -15,6 +15,7 @@ function getDayName(dateString) {
 }
 
 function create() {
+    document.getElementById("x").style.display="none";
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -139,5 +140,5 @@ function create() {
    a.download = "FIR_Report_2026.pdf";  
    a.click();
    alert("FIR created and saved successfully");
-   document.getElementById("x").style.display="none";
+   
   }
