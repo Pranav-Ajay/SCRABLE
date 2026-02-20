@@ -819,11 +819,11 @@ function execute(){
 
 function caseController(){
   let chatAnswer = document.getElementById("chatInput").value.trim();
-  document.getElementById("v").style.display="none";
 
   if(!policeMode.active){
     execute();
     policeMode.active = true;
+    document.getElementById("v").style.display="none";
     addHistory("SYSTEM: Case file created. Investigation started.");
     addHistory("POLICE: " + policeQuestionEngine());
     document.getElementById("chatInput").value="";
