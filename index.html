@@ -450,16 +450,6 @@ function TCA(caseData) {
     if(fir.includes("gun") && statement.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
     if(fir.includes("night") && statement.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
     if(fir.includes("morning") && statement.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("afternoon") && statement.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("morning") && statement.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("night") && statement.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("afternoon") && statement.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("evening") && statement.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("evening") && statement.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("evening") && statement.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("morning") && statement.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("afternoon") && statement.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
-    if(fir.includes("night") && statement.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
   }
 
   caseData.TCA = {
@@ -795,20 +785,13 @@ function execute(){
     return;
   }
 
-  document.getElementById("dis").style.display = "flex";
-
   let statementToCompare="", firFiler="";
 
-  if(victimAlive==="Yes"){
+  if(victimAlive==="yes"){
     statementToCompare=document.getElementById("victimStatement")?.value.trim() || "";
   }
 
-  if(victimAlive==="No"){
-    firFiler=document.getElementById("firFiler")?.value.trim() || "";
-    statementToCompare=document.getElementById("proxyStatement")?.value.trim() || "";
-  }
-
-   if(victimAlive==="probably"){
+  if(victimAlive==="no"){
     firFiler=document.getElementById("firFiler")?.value.trim() || "";
     statementToCompare=document.getElementById("proxyStatement")?.value.trim() || "";
   }
@@ -829,18 +812,16 @@ function execute(){
 }
 
 function caseController(){
-  
- let chatAnswer = document.getElementById("chatInput").value.trim();
- 
+  let chatAnswer = document.getElementById("chatInput").value.trim();
+
   if(!policeMode.active){
     execute();
     policeMode.active = true;
     addHistory("SYSTEM: Case file created. Investigation started.");
     addHistory("POLICE: " + policeQuestionEngine());
     document.getElementById("chatInput").value="";
-    document.getElementById("v").style.display="none";
     return;
-  }}
+  }
 
   if(chatAnswer){
     addHistory("USER: " + chatAnswer);
@@ -851,10 +832,14 @@ function caseController(){
     return;
   }
 
-  alert("Please answer in the chatbox");
-
+  alert("Enter answer in chat input.");
 }
 </script>
+
+</body>
+</html>
+
+
 
 
 
