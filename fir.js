@@ -138,5 +138,6 @@ function create() {
    a.href = URL.createObjectURL(blob);
    a.download = "FIR_Report_2026.pdf";  
    a.click();
-   alert("pdf successfully created");
+   alert("FIR created and saved successfully");
+   document.getElementById("x").style.display="none";
   }
