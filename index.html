@@ -814,6 +814,8 @@ function execute(){
     IncidentType: document.getElementById("incidentType")?.value || ""
   };
 
+   document.getElementById("v").style.display="none";
+
   updatePipeline();
 }
 
@@ -823,7 +825,6 @@ function caseController(){
   if(!policeMode.active){
     execute();
     policeMode.active = true;
-    document.getElementById("v").style.display="none";
     addHistory("SYSTEM: Case file created. Investigation started.");
     addHistory("POLICE: " + policeQuestionEngine());
     document.getElementById("chatInput").value="";
