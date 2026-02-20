@@ -289,7 +289,7 @@
         <div id="dynamicSection"></div>
         <div id="suspectInterviewSection"></div>
 
-        <button onclick="create()">Generate FIR</button>
+        <button id="x" onclick="create()">Generate FIR</button>
         <button id="v" onclick="caseController()">Run Investigation</button>
 
         <div id="output"></div>
@@ -819,6 +819,7 @@ function execute(){
 
 function caseController(){
   let chatAnswer = document.getElementById("chatInput").value.trim();
+  document.getElementById("v").style.display="none";
 
   if(!policeMode.active){
     execute();
