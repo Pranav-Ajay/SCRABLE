@@ -137,7 +137,7 @@ function create() {
 
    let a = document.createElement("a");
    a.href = URL.createObjectURL(blob);
-   a.download = "FIR_Report_2026.pdf";  
+   a.download = "FIR_Report.pdf";  
    a.click();
    alert("FIR created and saved successfully");
    
