@@ -831,9 +831,7 @@ function execute(){
 function caseController(){
   
  let chatAnswer = document.getElementById("chatInput").value.trim();
- let x=localStorage.getItem("FIR");
-  
- if(x && victimAlive){
+ 
   if(!policeMode.active){
     execute();
     policeMode.active = true;
@@ -852,6 +850,8 @@ function caseController(){
     addHistory("POLICE: " + policeQuestionEngine());
     return;
   }
+
+  alert("Please answer in the chatbox");
 
 }
 </script>
