@@ -237,6 +237,40 @@ function TCI(caseData) {
 
   if(fir.includes("morning") && fir.includes("midnight")) issues.push("Time contradiction inside FIR.");
   if(fir.includes("knife") && fir.includes("gun")) issues.push("Multiple weapon contradiction inside FIR.");
+  if(fir.includes("knife") && fir.includes("gun")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("rope") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("knife") && fir.includes("rope")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("rope")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("rope") && fir.includes("gun")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("acid") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("knife") && fir.includes("acid")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("acid")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("acid") && fir.includes("gun")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("dumbell") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("knife") && fir.includes("dumbell")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("dumbell")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("dumbell") && fir.includes("gun")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("gun") && fir.includes("knife")) contradictions.push("Weapon mismatch between FIR and statement.");
+    if(fir.includes("morning") && fir.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("morning") && fir.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("morning") && fir.includes("dusk")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("morning") && fir.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("afternoon") && fir.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("afternoon") && fir.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("afternoon") && fir.includes("dusk")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("afternoon") && fir.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("evening") && fir.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("evening") && fir.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("evening") && fir.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("evening") && fir.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("night") && fir.includes("morning")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("night") && fir.includes("afternoon")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("night") && fir.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("night") && fir.includes("duck")) contradictions.push("Time mismatch between FIR and statement.");
+    if(fir.includes("afternoon") && fir.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
 
   caseData.TCI = {
     status: issues.length===0 ? "Consistent" : "Inconsistent",
