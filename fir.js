@@ -38,6 +38,8 @@ function create() {
     let name9=document.getElementById("age").value;
 
     let name10=document.getElementById("HusbandName").value;
+
+    let name11=document.getElementById("firdetails").value;
     
   
     doc.setFont("helvetica", "normal");
@@ -107,6 +109,11 @@ function create() {
     y += 7;
     doc.text("DOB: " + name7 , 20, y);
     doc.text("Nationality: " + name8, 120, y);
+
+    doc.text("7. FIR statement", 14, y);
+    doc.setFontSize(11);
+    y += 8;
+    doc.text(name11, 20, y);
 
     y += 20;
     doc.text("Signature of Complainant:", 20, y);
