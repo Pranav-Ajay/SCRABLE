@@ -110,6 +110,7 @@ function create() {
     doc.text("DOB: " + name7 , 20, y);
     doc.text("Nationality: " + name8, 120, y);
 
+    y += 12;
     doc.text("7. FIR statement", 14, y);
     doc.setFontSize(11);
     y += 8;
