@@ -39,7 +39,7 @@ function create() {
 
     let name10=document.getElementById("HusbandName").value;
 
-    let name11=document.getElementById("firdetails").value;
+    let name11=document.getElementById("firDetails").value;
     
   
     doc.setFont("helvetica", "normal");
