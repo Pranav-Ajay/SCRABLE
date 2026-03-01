@@ -67,7 +67,7 @@
           <li>End Time: <input type="time" id="endTime"></li>
 
           <li>Time (Morning/Afternoon...): <input></li>
-          <li>Place of Incident: <input></li>
+          <li>Place of Incident: <input id="place"></li>
 
           <li>Location of Incident: <input id="location"></li>
           <li>Type of Incident: <input id="incidentType"></li>
@@ -162,6 +162,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script src="fir.js"></script>
+<script src="map_check.js"></script>
+
 
 
 <script>
@@ -235,6 +237,12 @@ function TCI(caseData) {
   let fir = (caseData.FIR || "").toLowerCase();
   let issues = [];
 
+  let place = document.getElementById("location").value;
+  let location = document.getElementById("place").value;
+
+  let validLocation =
+    await validatePlaceInLocation(place, location);
+
   if(fir.includes("morning") && fir.includes("midnight")) issues.push("Time contradiction inside FIR.");
   if(fir.includes("knife") && fir.includes("gun")) issues.push("Multiple weapon contradiction inside FIR.");
   if(fir.includes("knife") && fir.includes("gun")) contradictions.push("Weapon mismatch between FIR and statement.");
@@ -271,6 +279,7 @@ function TCI(caseData) {
     if(fir.includes("night") && fir.includes("evening")) contradictions.push("Time mismatch between FIR and statement.");
     if(fir.includes("night") && fir.includes("duck")) contradictions.push("Time mismatch between FIR and statement.");
     if(fir.includes("afternoon") && fir.includes("night")) contradictions.push("Time mismatch between FIR and statement.");
+    
 
   caseData.TCI = {
     status: issues.length===0 ? "Consistent" : "Inconsistent",
