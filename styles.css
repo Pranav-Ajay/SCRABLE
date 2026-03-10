@@ -1,126 +1,144 @@
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      padding-bottom: 60px; 
-    }
+  body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 60px; 
+}
 
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 3fr 1fr;
-      min-height: 100vh;
-    }
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  min-height: 100vh;
+}
 
-     .side{
-    background-color: #4b3621;
-    min-height: 100vh;   
-    padding: 60px 20px 100px 70px;
-    color: white;
-    }
+/* SIDEBAR COLOR CHANGED TO BEIGE */
 
-    .center{
-     padding: 40px;
-     padding-top: 80px;  
-     display: flex;
-     justify-content: center;
-    }
+.side{
+  background-color: #e8d8b8;
+  min-height: 100vh;   
+  padding: 60px 20px 100px 70px;
+  color: #333;
+}
 
-    .form-box {
-      width: 100%;
-      max-width: 750px;
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0px 8px 25px rgba(0,0,0,0.4);
-    }
+.center{
+  padding: 40px;
+  padding-top: 80px;  
+  display: flex;
+  justify-content: center;
+}
 
-    input, select, textarea {
-      margin-bottom: 10px;
-      padding: 8px;
-      width: 100%;
-      border-radius: 6px;
-      border: 1px solid #aaa;
-      box-sizing: border-box;
-    }
+.form-box {
+  width: 100%;
+  max-width: 750px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.4);
+}
 
-    button {
-      background: #013220;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 15px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 8px;
-    }
+input, select, textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  box-sizing: border-box;
+}
 
-    button:hover {
-      background: #d4af37;
-      color: white;
-    }
+button {
+  background: #013220;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+}
 
-    .profile-box{
-    text-align: left;
-    padding: 35px 20px;
-    border-radius: 50px;
-    color: white;
+button:hover {
+  background: #d4af37;
+  color: white;
+}
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;  
-    gap: 15px;
-   }
+.profile-box{
+  text-align: left;
+  padding: 35px 20px;
+  border-radius: 50px;
+  color: #333;
 
-    #ds{
-    width: 220px;
-    height: auto;      
-    border-radius: 50px;
-    object-fit: contain; 
-    display: block;
-    align-self: center;
-   }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  
+  gap: 15px;
+}
 
-    #de{
-    width: 220px;
-    height: 130px;
-    border-radius: 20px;
-    object-fit: cover;
-    background: white;
-    align-self: center;
-  }
+/* POLICE EMBLEM */
 
-    #dis {
-      display: none;
-      position: fixed;
-      bottom: 8%;
-      left: 50%;
-      transform: translateX(-50%);
-      gap: 10px;
-      align-items: center;
-    }
+#emblem{
+  width:120px;
+  height:auto;
+  border-radius:10px;
+  object-fit:contain;
+  display:block;
+  align-self:center;
+}
 
-    #chatInput {
-      width: 500px;
-      background-color: #BDC7D1;
-      padding: 10px;
-      border-radius: 20px;
-      border: none;
-    }
-    
-    .footer {
-      bottom: 0;
-      position: fixed;
-      left: 0;
-      width: 100%;
-      background-color: #4b3621;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      text-align: center;
-    }
-    .menu-btn{
+#ds{
+  width: 220px;
+  height: auto;      
+  border-radius: 50px;
+  object-fit: contain; 
+  display: block;
+  align-self: center;
+}
+
+#de{
+  width: 220px;
+  height: 130px;
+  border-radius: 20px;
+  object-fit: cover;
+  background: white;
+  align-self: center;
+}
+
+#dis {
+  display: none;
+  position: fixed;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+  align-items: center;
+}
+
+#chatInput {
+  width: 500px;
+  background-color: #BDC7D1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+/* FOOTER (text will be ANVESHAN in HTML) */
+
+.footer {
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background-color: #e8d8b8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.menu-btn{
   position: fixed;
   background: transparent;
   top: 20px;
@@ -128,13 +146,14 @@
   width:10px;
   height:20px;
   font-size: 26px;
-  color: white;
+  color: #333;
   padding: 10px 16px;
   border-radius: 12px;
   cursor: pointer;
   z-index: 2000;
 }
-    .menu-btn:hover{
+
+.menu-btn:hover{
   background: transparent;
 }
 
@@ -156,7 +175,7 @@
   left: -320px;
   width: 300px;
   height: 100%;
-  background: #4b3621; 
+  background: #e8d8b8; 
   transition: 0.3s ease;
   z-index: 1800;
   padding-top: 20px;
@@ -170,8 +189,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  color: white;
-  border-bottom: 2px solid rgba(255,255,255,0.2);
+  color: #333;
+  border-bottom: 2px solid rgba(0,0,0,0.2);
 }
 
 .menu-header h2{
@@ -184,7 +203,7 @@
   font-size: 22px;
   background: none;
   border: none;
-  color: white;
+  color: #333;
   cursor: pointer;
 }
 
@@ -194,7 +213,35 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  color: white;
+  color: #333;
   transition: 0.2s;
 }
 
+/* BATON ANIMATION */
+
+.baton{
+  width:18px;
+  height:140px;
+  background:#111;
+  border-radius:10px;
+  margin-top:200px;
+  position:relative;
+  animation: batonSwing 2s infinite ease-in-out;
+}
+
+.baton::after{
+  content:"";
+  position:absolute;
+  bottom:-25px;
+  left:-10px;
+  width:40px;
+  height:25px;
+  background:#444;
+  border-radius:6px;
+}
+
+@keyframes batonSwing{
+  0%{ transform: rotate(-20deg); }
+  50%{ transform: rotate(20deg); }
+  100%{ transform: rotate(-20deg); }
+}
