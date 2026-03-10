@@ -1,63 +1,108 @@
-  body {
-margin: 0;
-font-family: "Poppins", sans-serif;
-padding-bottom: 60px;
+ /* ===== GLOBAL ===== */
+
+:root{
+--primary:#e8dcc6;
+--secondary:#f5efe2;
+--accent:#8a6d3b;
+--dark:#4b3621;
+--card:#ffffff;
+--border:#d6c7a8;
+--text:#2b2b2b;
 }
 
-.layout {
-display: grid;
-grid-template-columns: 1fr 3fr 1fr;
-min-height: 100vh;
+body{
+margin:0;
+font-family:"Poppins",sans-serif;
+padding-bottom:60px;
+background:linear-gradient(135deg,#f5efe2,#e8dcc6);
+color:var(--text);
 }
 
-/* SIDEBAR BEIGE */
+/* ===== LAYOUT ===== */
+
+.layout{
+display:grid;
+grid-template-columns:1fr 3fr 1fr;
+min-height:100vh;
+gap:25px;
+padding:20px;
+}
+
+/* ===== SIDEBARS ===== */
 
 .side{
-background-color:#e8d8b8;
+background:var(--primary);
 min-height:100vh;
-padding:60px 20px 100px 70px;
-color:#333;
+padding:40px 25px;
+border-radius:18px;
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
+overflow-y:auto;
 }
 
-/* POLICE EMBLEM */
+/* case history list */
 
-#emblem{
-width:120px;
-display:block;
-margin-bottom:30px;
+#y{
+list-style:none;
+padding:0;
+margin:0;
 }
 
-/* CENTER */
+#y li{
+background:#f5efe2;
+padding:10px;
+margin-bottom:10px;
+border-radius:8px;
+font-size:13px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ===== CENTER PANEL ===== */
 
 .center{
 padding:40px;
-padding-top:80px;
 display:flex;
 justify-content:center;
+align-items:flex-start;
 }
 
 .form-box{
 width:100%;
 max-width:750px;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0px 8px 25px rgba(0,0,0,0.4);
+background:var(--card);
+padding:35px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+border:1px solid rgba(0,0,0,0.05);
+animation:fadeIn 0.6s ease;
 }
 
-/* FORM */
+/* ===== INPUTS ===== */
 
 input,select,textarea{
-margin-bottom:10px;
-padding:8px;
+margin-bottom:12px;
+padding:10px;
 width:100%;
-border-radius:6px;
-border:1px solid #aaa;
+border-radius:8px;
+border:1px solid var(--border);
 box-sizing:border-box;
+font-size:14px;
+background:#faf7f0;
+transition:0.2s;
 }
 
+input:focus,
+select:focus,
+textarea:focus{
+outline:none;
+border-color:var(--accent);
+box-shadow:0 0 6px rgba(138,109,59,0.3);
+background:white;
+}
+
+/* ===== BUTTONS ===== */
+
 button{
-background:#013220;
+background:var(--accent);
 color:white;
 border:none;
 padding:12px;
@@ -65,65 +110,94 @@ border-radius:10px;
 font-size:15px;
 cursor:pointer;
 width:100%;
-margin-top:8px;
+margin-top:10px;
+font-weight:600;
+letter-spacing:0.5px;
+transition:0.25s;
 }
 
 button:hover{
-background:#d4af37;
-color:white;
+background:#5c4524;
+transform:translateY(-2px);
+box-shadow:0 5px 12px rgba(0,0,0,0.2);
 }
 
-/* PROFILE */
+/* ===== PROFILE PANEL ===== */
 
 .profile-box{
-text-align:left;
-padding:35px 20px;
-border-radius:50px;
-color:#333;
-
+background:white;
+padding:25px;
+border-radius:18px;
 display:flex;
 flex-direction:column;
-align-items:flex-start;
-gap:15px;
+align-items:center;
+gap:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+border:1px solid rgba(0,0,0,0.05);
+animation:fadeIn 0.6s ease;
+}
+
+.profile-box b{
+color:var(--accent);
+font-size:14px;
 }
 
 #ds{
-width:220px;
-height:auto;
-border-radius:50px;
-object-fit:contain;
-display:block;
-align-self:center;
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
 }
 
 #de{
-width:220px;
-height:130px;
-border-radius:20px;
-object-fit:cover;
+width:180px;
+height:100px;
+border-radius:10px;
+object-fit:contain;
 background:white;
-align-self:center;
 }
 
-/* FOOTER */
+/* ===== CHAT INPUT ===== */
+
+#dis{
+display:none;
+position:fixed;
+bottom:8%;
+left:50%;
+transform:translateX(-50%);
+gap:10px;
+align-items:center;
+}
+
+#chatInput{
+width:600px;
+background:#f5efe2;
+padding:12px;
+border-radius:25px;
+border:1px solid var(--border);
+font-size:14px;
+}
+
+/* ===== FOOTER ===== */
 
 .footer{
 bottom:0;
 position:fixed;
 left:0;
 width:100%;
-background-color:#e8d8b8;
-color:#333;
+background:#d9c8a3;
+color:#3a2e1b;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:10px;
+padding:12px;
 text-align:center;
-font-weight:bold;
-letter-spacing:3px;
+font-weight:600;
+letter-spacing:2px;
+border-top:1px solid rgba(0,0,0,0.15);
 }
 
-/* MENU BUTTON */
+/* ===== MENU BUTTON ===== */
 
 .menu-btn{
 position:fixed;
@@ -131,12 +205,18 @@ background:transparent;
 top:20px;
 left:20px;
 font-size:26px;
-color:#333;
+color:white;
 padding:10px 16px;
 border-radius:12px;
 cursor:pointer;
 z-index:2000;
 }
+
+.menu-btn:hover{
+background:transparent;
+}
+
+/* ===== OVERLAY ===== */
 
 .overlay{
 position:fixed;
@@ -150,7 +230,7 @@ display:none;
 z-index:1500;
 }
 
-/* SIDE MENU */
+/* ===== SIDE MENU ===== */
 
 .side-menu{
 position:fixed;
@@ -158,7 +238,7 @@ top:0;
 left:-320px;
 width:300px;
 height:100%;
-background:#e8d8b8;
+background:var(--primary);
 transition:0.3s ease;
 z-index:1800;
 padding-top:20px;
@@ -172,15 +252,21 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:10px 20px;
-color:#333;
-border-bottom:2px solid rgba(0,0,0,0.2);
+color:var(--dark);
+border-bottom:2px solid rgba(0,0,0,0.1);
+}
+
+.menu-header h2{
+font-size:18px;
+letter-spacing:2px;
+margin:0;
 }
 
 .close-btn{
 font-size:22px;
 background:none;
 border:none;
-color:#333;
+color:var(--dark);
 cursor:pointer;
 }
 
@@ -188,40 +274,76 @@ cursor:pointer;
 display:block;
 padding:15px 25px;
 text-decoration:none;
-font-size:16px;
+font-size:15px;
 font-weight:500;
 color:#333;
+transition:0.2s;
 }
 
-/* BATON ANIMATION */
+.side-menu a:hover{
+background:#d9c8a3;
+padding-left:35px;
+}
+
+/* ===== POLICE EMBLEM ===== */
+
+.emblem{
+display:flex;
+justify-content:center;
+margin-bottom:20px;
+}
+
+.emblem img{
+width:80px;
+}
+
+/* ===== BATON ANIMATION ===== */
+
+.baton-container{
+position:fixed;
+right:20px;
+top:40%;
+}
 
 .baton{
-width:18px;
-height:150px;
-background:#111;
+width:20px;
+height:160px;
+background:#222;
 border-radius:10px;
-margin-bottom:40px;
-position:relative;
-animation:batonSwing 2s infinite ease-in-out;
-}
-
-.baton::after{
-content:"";
-position:absolute;
-bottom:-25px;
-left:-10px;
-width:40px;
-height:25px;
-background:#444;
-border-radius:6px;
+animation:batonSwing 1.8s infinite ease-in-out;
+transform-origin:bottom center;
 }
 
 @keyframes batonSwing{
-
-0%{transform:rotate(-20deg);}
-
-50%{transform:rotate(20deg);}
-
-100%{transform:rotate(-20deg);}
-
+0%{transform:rotate(-15deg);}
+50%{transform:rotate(15deg);}
+100%{transform:rotate(-15deg);}
 }
+
+/* ===== FADE ANIMATION ===== */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar{
+width:6px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#b7a98a;
+border-radius:4px;
+}
+
+
+
+
