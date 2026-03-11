@@ -38,7 +38,7 @@ async function validatePlaceInLocation(place, location) {
 
     } else {
 
-      contradictions.push("Weapon mismatch between FIR and statement.");
+      contradictions.push("Location mismatch");
       return false;
     }
 
