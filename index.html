@@ -117,10 +117,6 @@
 
   </div>
 
-  <div id="dis">
-    <input type="text" id="chatInput">
-    <button onclick="caseController()">→</button>
-  </div>
 
    <div style="position:fixed; bottom:5%; right:30%;">
     <input id="chatInput" style="width:600px; background-color:#BDC7D1; padding:10px; border-radius:20px;">
@@ -159,8 +155,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="fir.js"></script>
 <script src="map_check.js"></script>
+<script src="invest.js"></script>
 
 <script>
+let chatAnswer = document.getElementById("chatInput").value.trim();
 function openMenu(){
   document.getElementById("sideMenu").style.left = "0";
   document.getElementById("overlay").style.display = "block";
@@ -449,8 +447,10 @@ function policeQuestionEngine(){
 
   if(caseData.stage==="evidence" && !caseData.externalEvidence) return "All suspects interviewed. Do you have CCTV footage, call records, or witness names?";
   if(caseData.stage==="analysis") return "Evidence recorded. Type FINAL to generate ranking or RECHECK to re-check suspects.";
-  if(caseData.stage==="final") return "Final ranking generated. Investigation complete.";
-
+  if(caseData.stage==="final") {
+    return "Final ranking generated. Investigation complete.Do you want me to generate an investigatory report";
+    if(chatAnswer==="yes") create3()}
+      
   return "Investigation ongoing. Provide more inputs.";
 }
 
@@ -594,7 +594,6 @@ function execute(){
 }
 
 function caseController(){
-  let chatAnswer = document.getElementById("chatInput").value.trim();
 
   if(!policeMode.active){
     execute();
