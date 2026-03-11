@@ -158,7 +158,14 @@
 <script src="invest.js"></script>
 
 <script>
-let chatAnswer = document.getElementById("chatInput").value.trim();
+let chatAnswer = "";
+
+function getChatInput(){
+  let el = document.getElementById("chatInput");
+  if(!el) return "";
+  return el.value.trim();
+}
+  
 function openMenu(){
   document.getElementById("sideMenu").style.left = "0";
   document.getElementById("overlay").style.display = "block";
@@ -448,8 +455,8 @@ function policeQuestionEngine(){
   if(caseData.stage==="evidence" && !caseData.externalEvidence) return "All suspects interviewed. Do you have CCTV footage, call records, or witness names?";
   if(caseData.stage==="analysis") return "Evidence recorded. Type FINAL to generate ranking or RECHECK to re-check suspects.";
   if(caseData.stage==="final") {
-    return "Final ranking generated. Investigation complete.Do you want me to generate an investigatory report";
-    if(chatAnswer==="yes") create3()}
+  return "Final ranking generated. Investigation complete. Do you want me to generate an investigatory report? (Type YES)";
+}
       
   return "Investigation ongoing. Provide more inputs.";
 }
@@ -595,6 +602,8 @@ function execute(){
 
 function caseController(){
 
+  let chatAnswer = getChatInput();
+
   if(!policeMode.active){
     execute();
     policeMode.active = true;
@@ -606,6 +615,11 @@ function caseController(){
 
   if(chatAnswer){
     addHistory("USER: " + chatAnswer);
+    if(chatAnswer.toLowerCase() === "yes" && caseData.stage === "final"){
+    create3();
+    document.getElementById("chatInput").value="";
+   return;
+   }
     updateFromPoliceAnswer(chatAnswer);
     document.getElementById("chatInput").value="";
     updatePipeline();
