@@ -40,6 +40,29 @@ function create() {
     let name10=document.getElementById("HusbandName").value;
 
     let name11=document.getElementById("firDetails").value;
+
+    if name1==""{
+        alert("Incomplete details")}
+    if name2==""{
+        alert("Incomplete details")}
+    if name3==""{
+        alert("Incomplete details")}
+    if name4==""{
+        alert("Incomplete details")}
+    if name5==""{
+        alert("Incomplete details")}
+    if name6==""{
+        alert("Incomplete details")}
+    if name7==""{
+        alert("Incomplete details")}
+    if name8==""{
+        alert("Incomplete details")}
+    if name9==""{
+        alert("Incomplete details")}
+    if name10==""{
+        alert("Incomplete details")}
+    if name11==""{
+        alert("Incomplete details")}
     
   
     doc.setFont("helvetica", "normal");
