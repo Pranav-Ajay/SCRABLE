@@ -197,12 +197,14 @@ document.getElementById("victimAlive").addEventListener("change", function() {
 });
 
 
-function TCI(caseData) {
+async function TCI(caseData) {
   let fir = (caseData.FIR || "").toLowerCase();
   let issues = [];
 
-  let validLocation =
-    await validatePlaceInLocation(place, location);
+ let place = document.getElementById("place")?.value || "";
+ let location = document.getElementById("location")?.value || "";
+
+ let validLocation = await validatePlaceInLocation(place, location);
 
   if(fir.includes("morning") && fir.includes("midnight")) issues.push("Time contradiction inside FIR.");
   if(fir.includes("knife") && fir.includes("gun")) issues.push("Multiple weapon contradiction inside FIR.");
