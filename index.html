@@ -407,13 +407,34 @@ function updatePipeline(){
 function execute(){
   let fir=document.getElementById("firDetails").value.trim();
   let victimAlive=document.getElementById("victimAlive").value;
-  if(!fir || !victimAlive){ alert("Complete required fields."); return; }
+
+  if(!fir || !victimAlive){
+    alert("Complete required fields.");
+    return;
+  }
 
   let statementToCompare="", firFiler="";
-  if(victimAlive==="yes"){ statementToCompare=document.getElementById("victimStatement")?.value.trim()||""; }
-  if(victimAlive==="no"){ firFiler=document.getElementById("firFiler")?.value.trim()||""; statementToCompare=document.getElementById("proxyStatement")?.value.trim()||""; }
 
-  caseData={ FIR:fir, VictimAlive:victimAlive, FIR_Filer:firFiler, StatementUsed:statementToCompare, Date:document.getElementById("date")?.value||"", Time:document.getElementById("startTime")?.value||"", Weapon:document.getElementById("weaponUsed")?.value||"", Location:document.getElementById("location")?.value||"", IncidentType:document.getElementById("incidentType")?.value||"" };
+  if(victimAlive==="yes"){
+    statementToCompare=document.getElementById("victimStatement")?.value.trim() || "";
+  }
+
+  if(victimAlive==="no"){
+    firFiler=document.getElementById("firFiler")?.value.trim() || "";
+    statementToCompare=document.getElementById("proxyStatement")?.value.trim() || "";
+  }
+
+  caseData={
+    FIR: fir,
+    VictimAlive: victimAlive,
+    FIR_Filer: firFiler,
+    StatementUsed: statementToCompare,
+    Date: document.getElementById("date")?.value || "",
+    Time: document.getElementById("startTime")?.value || "",
+    Weapon: document.getElementById("weaponUsed")?.value || "",
+    Location: document.getElementById("location")?.value || "",
+    IncidentType: document.getElementById("incidentType")?.value || ""
+  };
 
   updatePipeline();
 }
