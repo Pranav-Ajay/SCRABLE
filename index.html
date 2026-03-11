@@ -518,7 +518,12 @@ function execute(){
   let fir=document.getElementById("firDetails").value.trim();
   let victimAlive=document.getElementById("victimAlive").value;
 
-  if(!fir.trim() || !victimAlive){
+  if(!fir){
+  alert("Complete required fields.");
+  return;
+  }
+
+  if(!victimAlive){
   alert("Complete required fields.");
   return;
   }
