@@ -64,7 +64,7 @@ function create() {
     if(name11===""){
         alert("Incomplete details");}
     
-  
+    else{
     doc.setFont("helvetica", "normal");
 
     doc.setFontSize(16);
@@ -172,4 +172,5 @@ function create() {
    a.click();
    alert("FIR created and saved successfully");
    
+  }
   }
