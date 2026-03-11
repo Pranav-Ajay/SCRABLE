@@ -212,8 +212,23 @@ cursor:pointer;
 z-index:2000;
 }
 
-.menu-btn:hover{
-background:transparent;
+    .menu-btn{
+  position: fixed;
+  background: transparent;
+  top: 20px;
+  left: 20px;
+  width:10px;
+  height:20px;
+  font-size: 26px;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 2000;
+}
+
+    .menu-btn:hover{
+  background: transparent;
 }
 
 /* ===== OVERLAY ===== */
