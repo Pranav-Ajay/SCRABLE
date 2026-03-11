@@ -41,6 +41,14 @@ function create() {
 
     let name11=document.getElementById("firDetails").value;
 
+    if(
+  name1==="" || name2==="" || name3==="" || name4==="" ||
+  name5==="" || name6==="" || name7==="" || name8==="" ||
+  name9==="" || name10==="" || name11===""){
+  
+  alert("Complete all the fields");
+  return;
+}
 
     doc.setFont("helvetica", "normal");
 
