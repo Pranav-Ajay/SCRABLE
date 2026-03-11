@@ -518,9 +518,9 @@ function execute(){
   let fir=document.getElementById("firDetails").value.trim();
   let victimAlive=document.getElementById("victimAlive").value;
 
-  if(!fir || !victimAlive){
-    alert("Complete required fields.");
-    return;
+  if(!fir.trim() || !victimAlive){
+  alert("Complete required fields.");
+  return;
   }
 
   let statementToCompare="", firFiler="";
