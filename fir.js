@@ -15,7 +15,7 @@ function getDayName(dateString) {
 }
 
 function create() {
-    document.getElementById("x").style.display="none";
+    
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
@@ -49,7 +49,7 @@ function create() {
   alert("Complete all the fields");
   return;
 }
-
+  else{
     doc.setFont("helvetica", "normal");
 
     doc.setFontSize(16);
@@ -156,6 +156,7 @@ function create() {
    a.download = "FIR_Report.pdf";  
    a.click();
    alert("FIR created and saved successfully");
+   document.getElementById("x").style.display="none";}
    
   }
   
