@@ -1,29 +1,29 @@
 async function validatePlaceInLocation(place, location) {
-
   if (!place || !location) {
     alert("Please enter both place and location");
     return false;
   }
 
-  const url =
-   `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${encodeURIComponent(place)}`;
+  const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${encodeURIComponent(place)}`;
 
   try {
-
     const res = await fetch(url, {
-      headers: { "User-Agent": "FIR-System" }
+      headers: { "User-Agent": "Police-Assistance-System-V2" }
     });
 
     const data = await res.json();
 
     if (data.length === 0) {
-      alert("Place not found");
+      alert("Place not found in geographic database.");
       return false;
     }
 
     const address = data[0].address;
-
+    
     const hierarchy = [
+      address.neighbourhood,
+      address.suburb,
+      address.city_district,
       address.city,
       address.town,
       address.village,
@@ -32,19 +32,20 @@ async function validatePlaceInLocation(place, location) {
       address.country
     ].filter(Boolean).map(x => x.toLowerCase());
 
-    if (hierarchy.includes(location.toLowerCase())) {
+    const normalizedLocation = location.toLowerCase().trim();
 
+    if (hierarchy.includes(normalizedLocation)) {
       return true;
-
     } else {
-
-      contradictions.push("Location mismatch");
+ 
+      console.warn(`Validation failed. Found hierarchy: ${hierarchy.join(", ")}`);
+      contradictions.push(`Location mismatch: "${place}" does not appear to be within "${location}".`);
       return false;
     }
 
   } catch (error) {
-
-    alert("Error validating location");
+    console.error("Geocoding Error:", error);
+    alert("Error validating location via OpenStreetMap.");
     return false;
   }
 }
