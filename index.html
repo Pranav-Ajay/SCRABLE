@@ -512,10 +512,25 @@ function execute(){
 }
 
 function caseController(){
-  let chatAnswer=document.getElementById("chatInput").value.trim();
-  if(!chatAnswer){ alert("Enter input for investigation."); return; }
-  updateFromPoliceAnswer(chatAnswer);
-  document.getElementById("chatInput").value="";
-  updatePipeline();
+  let chatAnswer = document.getElementById("chatInput").value.trim();
+
+  if(!policeMode.active){
+    execute();
+    policeMode.active = true;
+    addHistory("SYSTEM: Case file created. Investigation started.");
+    addHistory("POLICE: " + policeQuestionEngine());
+    document.getElementById("chatInput").value="";
+    return;
+  }
+
+  if(chatAnswer){
+    addHistory("USER: " + chatAnswer);
+    updateFromPoliceAnswer(chatAnswer);
+    document.getElementById("chatInput").value="";
+    updatePipeline();
+    addHistory("POLICE: " + policeQuestionEngine());
+    return;
+  }
+
 }
 </script>
