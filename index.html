@@ -431,6 +431,8 @@ function create() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
+   caseData.FIR = document.getElementById("firDetails").value;
+
    let name1=document.getElementById("complainantName").value;
     
     let name2=document.getElementById("date").value;
@@ -1087,15 +1089,14 @@ function EAS(caseData){
 }
 
 function generateEvidenceSummary(caseData) {
+
     let evidence = [];
 
-   
     if (caseData.TCI && caseData.TCI.issues.length) {
         caseData.TCI.issues.forEach(i => {
             evidence.push("TCI Issue: " + i);
         });
     }
-
 
     if (caseData.TCA && caseData.TCA.contradictions.length) {
         caseData.TCA.contradictions.forEach(c => {
@@ -1103,28 +1104,20 @@ function generateEvidenceSummary(caseData) {
         });
     }
 
-    
-    if (caseData.RLE && caseData.RLE.extractedFacts) {
-        caseData.RLE.extractedFacts.forEach(f => {
-            evidence.push("Extracted Fact: " + f);
+    if (caseData.RLE && caseData.RLE.suspects) {
+        caseData.RLE.suspects.forEach(s => {
+            evidence.push("Suspect Identified: " + s.name);
         });
     }
 
-  
-    if (caseData.FCI && caseData.FCI.inconsistencies) {
-        caseData.FCI.inconsistencies.forEach(i => {
-            evidence.push("Fact Inconsistency: " + i);
-        });
-    }
-
-
-    if (caseData.FAS && caseData.FAS.finalFindings) {
-        caseData.FAS.finalFindings.forEach(f => {
-            evidence.push("Final Finding: " + f);
+    if (caseData.EAS && caseData.EAS.highPrioritySuspects.length) {
+        caseData.EAS.highPrioritySuspects.forEach(s => {
+            evidence.push("High Priority Suspect: " + s);
         });
     }
 
     caseData.evidenceSummary = evidence;
+
     return caseData;
 }
 
@@ -1208,6 +1201,8 @@ function updateFromPoliceAnswer(answer){
       suspect.alibiWeak = true;
       suspect.contradictions = suspect.contradictions || [];
       suspect.contradictions.push("Weak alibi: claims alone.");
+
+    if(!caseData.RLE || !caseData.RLE.suspects) return
     }
   }
 }
