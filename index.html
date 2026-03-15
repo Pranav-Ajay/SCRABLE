@@ -1314,11 +1314,7 @@ async function execute() {
     let fir = document.getElementById("firDetails").value.trim();
     let victimAlive = document.getElementById("victimAlive").value;
 
-    if (!fir || !victimAlive) {
-        alert("Complete required fields.");
-        return;
-    }
-
+  
     let statementToCompare = "", firFiler = "";
 
     if (victimAlive === "yes") {
@@ -1347,35 +1343,51 @@ async function execute() {
 }
 
 async function caseController() {
+
     let chatAnswer = document.getElementById("chatInput").value.trim();
     let normalized = chatAnswer.toLowerCase();
 
     if (!policeMode.active) {
-        await execute(); 
+
+        let fir = document.getElementById("firDetails").value.trim();
+        let victimAlive = document.getElementById("victimAlive").value;
+
+        if (!fir || !victimAlive) {
+            alert("Complete required fields.");
+            return;
+        }
+
+        await execute();
+
         policeMode.active = true;
+
         addHistory("SYSTEM: Case file created. Investigation started.");
         addHistory("POLICE: " + policeQuestionEngine());
+
         document.getElementById("chatInput").value = "";
         return;
     }
 
     if (chatAnswer) {
-        addHistory("USER: " + chatAnswer);
-        updateFromPoliceAnswer(chatAnswer);
-        document.getElementById("chatInput").value = "";
 
-        if (caseData.stage === "final" && ["yes", "report", "generate"].includes(normalized)) {
-            if (typeof create3 === "function") create3(); 
-            await updatePipeline();
-            addHistory("POLICE: Investigation complete. Final ranking generated.");
-            return;
-        }
+    addHistory("USER: " + chatAnswer);
 
-        await updatePipeline(); 
-        addHistory("POLICE: " + policeQuestionEngine());
+    updateFromPoliceAnswer(chatAnswer);
+
+    document.getElementById("chatInput").value = "";
+
+    if (caseData.stage === "final" && ["yes", "report", "generate"].includes(normalized)) {
+
+        if (typeof create3 === "function") create3();
+
+        await updatePipeline();
+
+        addHistory("POLICE: Investigation complete. Final ranking generated.");
+
+        return;
     }
+
+    await updatePipeline();
+
+    addHistory("POLICE: " + policeQuestionEngine());
 }
-
-</script>
-</html>
-
