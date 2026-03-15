@@ -196,7 +196,25 @@ let nbModel={ total:0 }
 let caseData = {};
 let policeMode = { active: false };
 
-let nbModel={}
+    let name1=document.getElementById("complainantName").value;
+    
+    let name2=document.getElementById("date").value;
+    
+    let name3=document.getElementById("startTime").value;
+    
+    let name4=document.getElementById("endTime").value;
+    
+    let name5=document.getElementById("address").value;
+    
+    let name6=document.getElementById("HusbandName").value;
+    
+    let name7=document.getElementById("dob").value;
+    
+    let name8=document.getElementById("nation").value;
+    
+    let name9=document.getElementById("age").value;
+
+    let name10=document.getElementById("HusbandName").value;
 
 let encoders={
 city:{},
@@ -434,27 +452,6 @@ function getDayName(dateString) {
 function create() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-
-    let name1=document.getElementById("complainantName").value;
-    
-    let name2=document.getElementById("date").value;
-    
-    let name3=document.getElementById("startTime").value;
-    
-    let name4=document.getElementById("endTime").value;
-    
-    let name5=document.getElementById("address").value;
-    
-    let name6=document.getElementById("HusbandName").value;
-    
-    let name7=document.getElementById("dob").value;
-    
-    let name8=document.getElementById("nation").value;
-    
-    let name9=document.getElementById("age").value;
-
-    let name10=document.getElementById("HusbandName").value;
-    
   
     doc.setFont("helvetica", "normal");
 
@@ -798,6 +795,7 @@ alert("Investigation report created successfully");}
 async function TCI(caseData) {
 
   let fir = (caseData.FIR || "").toLowerCase();
+  issues = [];
 
   let place = document.getElementById("place")?.value || "";
   let location = document.getElementById("location")?.value || "";
