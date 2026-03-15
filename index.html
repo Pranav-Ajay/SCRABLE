@@ -910,7 +910,7 @@ async function TCI(caseData) {
   let weapons = ["knife","gun","rope","acid","dumbbell","stick","stone"];
 
   weapons.forEach(w=>{
-    if(caseData.Weapon && fir.includes(w) && caseData.Weapon.toLowerCase() !== w){
+   if(caseData.Weapon && fir.includes(w) && caseData.Weapon.toLowerCase() !== w){
       issues.push("Weapon in FIR text contradicts selected weapon.");
     }
   });
@@ -993,7 +993,7 @@ function RLE(caseData){
     /name\s+could\s+be\s+([A-Z][a-z]+)/g,
     /called\s+([A-Z][a-z]+)/g,
     /shouted\s+([A-Z][a-z]+)/g,
-    /known\s+as\s+([A-Z][a-z]+)/g
+    /known\s+as\s+([A-Za-z]+)/gi
   ];
 
   namePatterns.forEach(pattern=>{
@@ -1442,5 +1442,8 @@ async function caseController() {
 
     addHistory("POLICE: " + policeQuestionEngine());
  }
+}
+window.onload = function(){
+  loadCrimeDataset();
 }
 </script>
