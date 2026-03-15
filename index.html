@@ -885,8 +885,6 @@ async function TCI(caseData) {
   return caseData;
 }
 
-
-
 function TCA(caseData){
 
   let fir = (caseData.FIR || "").toLowerCase();
@@ -922,12 +920,14 @@ function TCA(caseData){
 
   return caseData;
 }
+
 function RLE(caseData){
+
   let statement = caseData.StatementUsed || "";
-  let suspects=[], locations=[], traits=[];
+  let suspects=[], locations=[], traits=[], similarities=[];
 
   if(!statement){
-    caseData.RLE={suspects,locations,traits};
+    caseData.RLE={suspects,locations,traits,similarities};
     return caseData;
   }
 
@@ -968,6 +968,7 @@ function RLE(caseData){
   });
 
   sentences.forEach(sentence=>{
+
     traitKeywords.forEach(trait=>{
       if(sentence.toLowerCase().includes(trait)) traits.push(trait);
     });
@@ -975,10 +976,37 @@ function RLE(caseData){
     locationKeywords.forEach(loc=>{
       if(sentence.toLowerCase().includes(loc)) locations.push(loc);
     });
+
   });
 
   traits=[...new Set(traits)];
   locations=[...new Set(locations)];
+
+
+  function simpleSim(a,b){
+
+    let wordsA = a.toLowerCase().split(/\s+/);
+    let wordsB = b.toLowerCase().split(/\s+/);
+
+    let common = wordsA.filter(w => wordsB.includes(w));
+
+    return common.length / Math.max(wordsA.length,wordsB.length);
+
+  }
+
+  for(let i=0;i<sentences.length-1;i++){
+
+    let score = simpleSim(sentences[i],sentences[i+1]);
+
+    if(score > 0.65){
+      similarities.push({
+        sentence1: sentences[i].trim(),
+        sentence2: sentences[i+1].trim(),
+        score: score
+      });
+    }
+
+  }
 
   if(suspects.length===0 && traits.length>0){
     suspects.push({
@@ -994,7 +1022,12 @@ function RLE(caseData){
     s.traits = [...traits];
   });
 
-  caseData.RLE={suspects,locations,traits};
+  caseData.RLE = caseData.RLE || {};
+  caseData.RLE.suspects = suspects.length ? suspects : caseData.RLE.suspects || [];
+  caseData.RLE.locations = locations;
+  caseData.RLE.traits = traits;
+  caseData.RLE.similarities = similarities;
+
   return caseData;
 }
 
@@ -1218,26 +1251,6 @@ function renderOutput(){
   `;
 }
 
-function SIM(){
-  if(!caseData.RLE?.suspects) return;
-
-  const section=document.getElementById("suspectInterviewSection");
-  section.innerHTML="<h3>Suspect Interviews</h3>";
-
-  caseData.RLE.suspects.forEach((s,index)=>{
-    section.innerHTML += `
-      <div class="suspect-section">
-        <b>Suspect ${index+1}: ${s.name}</b><br><br>
-
-        <label>Interview Statement:</label><br>
-        <textarea id="suspectStmt_${index}" placeholder="Enter statement for ${s.name}">${s.interviewStatement || ""}</textarea><br>
-
-        <button onclick="saveInterview(${index})">Save Statement</button>
-      </div>
-    `;
-  });
-}
-
 function saveInterview(index){
   let textarea=document.getElementById(`suspectStmt_${index}`);
   if(!textarea) return;
@@ -1306,7 +1319,6 @@ async function updatePipeline() {
 
     localStorage.setItem("Current_Case", JSON.stringify(caseData));
 
-    SIM();
     renderOutput();
 }
 
