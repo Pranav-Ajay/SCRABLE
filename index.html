@@ -49,6 +49,9 @@
           <option>Acid</option>
           <option>Dumbbell</option>
           <option>Poison</option>
+          <option>Bat</option>
+          <option>Stick</option>
+          <option>trophy</option>
           <option>Other</option>
          </select>
          </li>
@@ -350,7 +353,19 @@ score:bestScore
 
 }
 
+function accuracyScore(actual,predicted){
 
+let correct=0
+
+for(let i=0;i<actual.length;i++){
+if(actual[i]===predicted[i]){
+correct++
+}
+}
+
+return (correct/actual.length)*100
+
+}
 async function loadCrimeDataset(){
 
 let res=await fetch("crime_dataset_india.csv")
@@ -375,9 +390,28 @@ return{
 
 trainNB(data)
 
-}
+let actual=[]
+let predicted=[]
 
-window.onload=loadCrimeDataset
+data.forEach(row=>{
+
+let result=predictCrime(
+row["City"],
+row["Victim Age"],
+row["Victim Gender"],
+row["Weapon Used"]
+)
+
+actual.push(preprocess(row["Crime Description"]))
+predicted.push(preprocess(result.crime))
+
+})
+
+let acc=accuracyScore(actual,predicted)
+
+console.log("Naive Bayes Model Accuracy:",acc.toFixed(2)+"%")
+
+}
 
 
 function addHistory(text){
@@ -906,7 +940,7 @@ function TCA(caseData){
 
   if(statement){
 
-    let weapons = ["knife","gun","rope","acid","dumbell","stick","stone"];
+    let weapons = ["knife","gun","rope","acid","dumbbell","stick","stone","poison","bat","trophy"];
 
     let firWeapon = weapons.find(w => fir.includes(w));
     let statementWeapon = weapons.find(w => statement.includes(w));
