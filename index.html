@@ -196,26 +196,7 @@ let nbModel={ total:0 }
 let caseData = {};
 let policeMode = { active: false };
 
-    let name1=document.getElementById("complainantName").value;
-    
-    let name2=document.getElementById("date").value;
-    
-    let name3=document.getElementById("startTime").value;
-    
-    let name4=document.getElementById("endTime").value;
-    
-    let name5=document.getElementById("address").value;
-    
-    let name6=document.getElementById("HusbandName").value;
-    
-    let name7=document.getElementById("dob").value;
-    
-    let name8=document.getElementById("nation").value;
-    
-    let name9=document.getElementById("age").value;
-
-    let name10=document.getElementById("HusbandName").value;
-
+   
 let encoders={
 city:{},
 gender:{},
@@ -345,11 +326,11 @@ for(let crime in nbModel.crimeCounts){
 
 let prior=Math.log(nbModel.crimeCounts[crime]/nbModel.total)
 
-let cityProb=Math.log((nbModel.cityCounts[crime][cityE]||1)/nbModel.crimeCounts[crime])
+let cityProb=Math.log(((nbModel.cityCounts[crime]||{})[cityE]||1)/nbModel.crimeCounts[crime])
 
-let genderProb=Math.log((nbModel.genderCounts[crime][genderE]||1)/nbModel.crimeCounts[crime])
+let genderProb=Math.log(((nbModel.genderCounts[crime]||{})[genderE]||1)/nbModel.crimeCounts[crime])
 
-let weaponProb=Math.log((nbModel.weaponCounts[crime][weaponE]||1)/nbModel.crimeCounts[crime])
+let weaponProb=Math.log(((nbModel.weaponCounts[crime]||{})[weaponE]||1)/nbModel.crimeCounts[crime])
 
 let ageProb=Math.log(gaussian(age,nbModel.ageMean[crime],nbModel.ageVar[crime]))
 
@@ -369,9 +350,6 @@ score:bestScore
 
 }
 
-/* ============================
-LOAD DATASET
-============================ */
 
 async function loadCrimeDataset(){
 
@@ -383,7 +361,7 @@ let rows=text.trim().split("\n")
 
 let data=rows.slice(1).map(r=>{
 
-let cols=r.split(",")
+let cols=r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
 
 return{
 "City":cols[0],
@@ -452,6 +430,27 @@ function getDayName(dateString) {
 function create() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
+
+   let name1=document.getElementById("complainantName").value;
+    
+    let name2=document.getElementById("date").value;
+    
+    let name3=document.getElementById("startTime").value;
+    
+    let name4=document.getElementById("endTime").value;
+    
+    let name5=document.getElementById("address").value;
+    
+    let name6=document.getElementById("HusbandName").value;
+    
+    let name7=document.getElementById("dob").value;
+    
+    let name8=document.getElementById("nation").value;
+    
+    let name9=document.getElementById("age").value;
+
+    let name10=document.getElementById("HusbandName").value;
+
   
     doc.setFont("helvetica", "normal");
 
@@ -611,6 +610,27 @@ function create() {
 
 const { jsPDF } = window.jspdf;
 const doc = new jsPDF();
+
+ let name1=document.getElementById("complainantName").value;
+    
+ let name2=document.getElementById("date").value;
+    
+ let name3=document.getElementById("startTime").value;
+    
+ let name4=document.getElementById("endTime").value;
+    
+ let name5=document.getElementById("address").value;
+    
+ let name6=document.getElementById("HusbandName").value;
+    
+ let name7=document.getElementById("dob").value;
+    
+ let name8=document.getElementById("nation").value;
+    
+ let name9=document.getElementById("age").value;
+
+ let name10=document.getElementById("HusbandName").value;
+
     
 doc.setFont("helvetica", "normal");
 
@@ -717,7 +737,6 @@ doc.setFontSize(11);
 
 y += 8;
 
-/* Collect evidence automatically */
 
 let evidence = [];
 
@@ -842,7 +861,7 @@ async function TCI(caseData) {
     }
   }
 
-  let weapons = ["knife","gun","rope","acid","dumbell","stick","stone"];
+  let weapons = ["knife","gun","rope","acid","dumbbell","stick","stone"];
 
   weapons.forEach(w=>{
     if(caseData.Weapon && fir.includes(w) && caseData.Weapon.toLowerCase() !== w){
