@@ -628,7 +628,7 @@ function create() {
       address.country
     ].filter(Boolean).map(x => x.toLowerCase());
 
-    if (hierarchy.some(h => h.includes(location.toLowerCase()))) {
+   if(hierarchy.some(h => h.includes(location.toLowerCase())) || place.toLowerCase().includes(location.toLowerCase())){
       return true; 
     } else {
       issues.push("Location mismatch between place and location.");
